@@ -15,7 +15,10 @@
  
  switch ($_SERVER['REQUEST_METHOD']) {
   case 'POST':
-   
+   $data = [
+       'elemento1'=>'hola'
+       
+       ];
    
    return_response(200, "OK", $data);
    break;
