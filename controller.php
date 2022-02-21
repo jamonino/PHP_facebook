@@ -1,6 +1,7 @@
 <?php
 
  require "DB.php";
+ require "user.php";
 
 
  function return_response($status, $statusMessage, $data) {
@@ -19,6 +20,10 @@
  switch ($_SERVER['REQUEST_METHOD']) {
   case 'POST':
    $myDb = new DB();
+   $newUser = new user;
+   $newUser->jsonConstruct($bodyRequest);
+   
+   $newUser
    
    return_response(200, "OK", $data);
    break;

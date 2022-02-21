@@ -13,6 +13,21 @@ class user {
         $this->age = $age;
     }
     
+    public function jsonConstruct($json) {
+        $this->set(json_decode($json, true));
+    }
+
+    public function set($data) {
+        foreach ($data AS $key => $value) {
+            if (is_array($value)) {
+                $sub = new JSONObject;
+                $sub->set($value);
+                $value = $sub;
+            }
+            $this->{$key} = $value;
+        }
+    }
+    
     public function DB_insert($dbconn){
          
         pg_prepare($dbconn, "my_query_INSERT", 'INSERT INTO users (username,pass,age) VALUES ($1,$2,$3) returning id;');
