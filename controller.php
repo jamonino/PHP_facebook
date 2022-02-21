@@ -1,5 +1,8 @@
 <?php
 
+ require "DB.php";
+
+
  function return_response($status, $statusMessage, $data) {
   header("HTTP/1.1 $status $statusMessage");
   header("Content-Type: application/json; charset=UTF-8");
@@ -15,10 +18,7 @@
  
  switch ($_SERVER['REQUEST_METHOD']) {
   case 'POST':
-   $data = [
-       'elemento1'=>'hola'
-       
-       ];
+   $myDb = new DB();
    
    return_response(200, "OK", $data);
    break;
