@@ -1,7 +1,13 @@
 <?php
 
- header("Access-Control-Allow-Origin: *");
- header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");  
+ function return_response($status, $statusMessage, $data) {
+  header("HTTP/1.1 $status $statusMessage");
+  header("Content-Type: application/json; charset=UTF-8");
+
+  echo json_encode($data);
+ }
+ 
+ 
  $connectionURI = explode("/", $_SERVER['REQUEST_URI']);
 
  $bodyRequest = file_get_contents("php://input");
@@ -48,9 +54,4 @@
  }
 
 
- function return_response($status, $statusMessage, $data) {
-  header("HTTP/1.1 $status $statusMessage");
-  header("Content-Type: application/json; charset=UTF-8");
-
-  echo json_encode($data, JSON_PRETTY_PRINT);
- }
+ 
