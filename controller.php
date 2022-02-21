@@ -9,8 +9,6 @@
  
  switch ($_SERVER['REQUEST_METHOD']) {
   case 'GET':
-
-   $data = new stdClass();
    
    if(isset($id)) {
     $data->property = 'Here we go';
@@ -20,7 +18,6 @@
     $data->property = 'Here we go 2';
    }
    return_response(200, "OK", $data);
-   
    break;
   case 'POST':
    $array = json_decode($bodyRequest, true);
