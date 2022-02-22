@@ -1,6 +1,6 @@
 <?php
 
-class newEmptyPHP implements \JsonSerializable {
+class User implements \JsonSerializable {
     
     private string $username;
     private string $pass;
